@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"github.com/rockefelm/Pokedex-Go/structs"
+	"github.com/rockefelm/Pokedex-Go/commands"
 )
 
 func cleanInput(text string) []string {

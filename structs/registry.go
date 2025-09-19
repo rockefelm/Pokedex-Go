@@ -1,5 +1,9 @@
 package structs
 
+import (
+	"github.com/rockefelm/Pokedex-Go/commands"
+)
+
 type cliCommand struct {
 	name        string
 	description string
