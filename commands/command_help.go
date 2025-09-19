@@ -2,7 +2,6 @@ package commands
 
 import (
 	"fmt"
-	"github.com/rockefelm/Pokedex-Go/structs"
 )
 
 func commandHelp() error {

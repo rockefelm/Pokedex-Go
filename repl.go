@@ -5,7 +5,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"github.com/rockefelm/Pokedex-Go/structs"
 	"github.com/rockefelm/Pokedex-Go/commands"
 )
 
