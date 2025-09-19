@@ -1,9 +1,10 @@
-package main
+package pokedex
 
 import (
 	"bufio"
 	"fmt"
 	"os"
+	"github.com/rockefelm/Pokedex-Go/structs"
 )
 
 func main(){
