@@ -9,12 +9,14 @@ import (
 
 // Client -
 type Client struct {
-	HttpClient http.Client
+	cache		Cache
+	httpClient 	http.Client
 }
 
-func NewClient(timeout time.Duration) Client {
+func NewClient(timeout, cacheDelay time.Duration) Client {
 	return Client {
-		HttpClient: http.Client {
+		cache: NewCache(cacheDelay),
+		httpClient: http.Client {
 			Timeout: timeout,
 		},
 	}
@@ -30,12 +32,22 @@ func (client *Client) Locations(locationURL *string) (Locations, error) {
 		url = *locationURL
 	}
 
+	if val, ok := client.cache.Get(url); ok {
+		locations := Locations{}
+		err := json.Unmarshal(val, &locations)
+		if err != nil {
+			return Locations{}, err
+		}
+
+		return locations, nil
+	}
+
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return Locations{}, err
 	}
 
-	res, err := client.HttpClient.Do(req)
+	res, err := client.httpClient.Do(req)
 	if err != nil {
 		return Locations{}, err
 	}
@@ -52,5 +64,6 @@ func (client *Client) Locations(locationURL *string) (Locations, error) {
 		return Locations{}, err
 	}
 
+	client.cache.Add(url, jsonData)
 	return locations, nil
 }
