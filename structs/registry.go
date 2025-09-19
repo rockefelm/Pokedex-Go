@@ -1,4 +1,4 @@
-package pokedex
+package structs
 
 type cliCommand struct {
 	name        string

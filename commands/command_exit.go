@@ -1,4 +1,4 @@
-package pokedex
+package commands
 
 import (
 	"fmt"
