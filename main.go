@@ -1,5 +1,15 @@
-package pokedex
+package main
 
+import (
+	"time"
+
+	"github.com/rockefelm/Pokedex-Go/structs"
+)
 func main(){
-	repl()
+	client := structs.NewClient(5 * time.Second)
+	cfg := &structs.Config{
+		PokeapiClient: client,
+	}
+
+	repl(cfg)
 }

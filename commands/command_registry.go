@@ -18,5 +18,15 @@ func init() {
 			Description:"Displays a help message\n",
 			Callback:	CommandHelp,
 		},
+		"map": {
+			Name:        "map",
+			Description: "Get the next page of locations\n",
+			Callback:    CommandMap,
+		},
+		"mapb": {
+			Name:        "mapb",
+			Description: "Get the previous page of locations\n",
+			Callback:    CommandMapBack,
+		},
 	}
 }
