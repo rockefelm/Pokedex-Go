@@ -14,11 +14,18 @@ func main(){
 		if !scanner.Scan() {
 			break
 		}
-		text := cleanInput(scanner.Text())
+		command := cleanInput(scanner.Text())
 
-		if len(text) == 0 {
+		if len(command) == 0 {
 			continue
 		}
-		fmt.Printf("Your command was: %v\n", text[0])
+		if cmd, exists := commandRegistry[command[0]]; !exists {
+			fmt.Printf("Unknown command: %v\n", command[0])
+		} else {
+			err := cmd.callback()
+			if err != nil {
+				fmt.Printf("Error executing command %v: %v\n", command[0], err)
+			}
+		}
 	}
 }
