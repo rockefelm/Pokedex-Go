@@ -4,19 +4,19 @@ import (
 	"github.com/rockefelm/Pokedex-Go/structs"
 )
 
-var commandRegistry map[string]cliCommand
+var CommandRegistry map[string]structs.CliCommand
 
 func init() {
-	commandRegistry = map[string]cliCommand{
+	CommandRegistry = map[string]structs.CliCommand{
 		"exit": {
-			name:        "exit",
-			description: "Exit the Pokedex\n",
-			callback:    commandExit,
+			Name:        "exit",
+			Description: "Exit the Pokedex\n",
+			Callback:    CommandExit,
 		},
 		"help": {
-			name:		"help",
-			description:"Displays a help message\n",
-			callback:	commandHelp,
+			Name:		"help",
+			Description:"Displays a help message\n",
+			Callback:	CommandHelp,
 		},
 	}
 }

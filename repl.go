@@ -25,10 +25,10 @@ func repl() {
 		if len(command) == 0 {
 			continue
 		}
-		if cmd, exists := commandRegistry[command[0]]; !exists {
+		if cmd, exists := commands.CommandRegistry[command[0]]; !exists {
 			fmt.Printf("Unknown command: %v\n", command[0])
 		} else {
-			err := cmd.callback()
+			err := cmd.Callback()
 			if err != nil {
 				fmt.Printf("Error executing command %v: %v\n", command[0], err)
 			}
